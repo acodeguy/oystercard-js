@@ -9,4 +9,12 @@ describe('Oystercard', function() {
       assert.strictEqual(oystercard.balance(), 0);
     });
   });
+
+  describe('#topup', function() {
+    it('increases the blanace of the card by the amount topped-up', function() {
+      var oystercard = new Oystercard();
+      oystercard.topup(10)
+      assert.strictEqual(oystercard.balance(), 10);
+    });
+  });
 });

@@ -6,6 +6,10 @@ class Oystercard {
   balance() {
     return this._balance;
   }
+
+  topup(amount) {
+    this._balance += amount;
+  }
 }
 
 module.exports = Oystercard;
