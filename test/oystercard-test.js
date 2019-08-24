@@ -16,5 +16,15 @@ describe('Oystercard', function() {
       oystercard.topup(10)
       assert.strictEqual(oystercard.balance(), 10);
     });
+
+    it('does not allow the balance to increase over the maximum allowed', function() {
+      var oystercard = new Oystercard();
+      assert.throws(
+        function() { oystercard.topup(101) },
+        Error,
+        'Topup failed; would bring balance over maximum amount allowed.'
+      );
+      assert.strictEqual(oystercard.balance(), 0);
+    });
   });
 });
