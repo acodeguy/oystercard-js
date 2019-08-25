@@ -36,6 +36,10 @@ class Oystercard {
     this._isInJourney = true;
   }
 
+  touchOut() {
+    this._isInJourney = false;
+  }
+
   isInJourney() {
     return this._isInJourney;
   }

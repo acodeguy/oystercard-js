@@ -45,4 +45,15 @@ describe('Oystercard', function() {
     });
   })
   
+  describe('#touchOut', function() {
+    it('sets the inJourney flag to true', function() {
+      var oystercard = new Oystercard();
+      assert.strictEqual(oystercard.isInJourney(), false);
+      oystercard.touchIn();
+      assert.strictEqual(oystercard.isInJourney(), true);
+      oystercard.touchOut();
+      assert.strictEqual(oystercard.isInJourney(), false);
+    });
+  })
+
 });
