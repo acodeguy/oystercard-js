@@ -40,15 +40,26 @@ describe('Oystercard', function() {
     it('sets the inJourney flag to true', function() {
       var oystercard = new Oystercard();
       assert.strictEqual(oystercard.isInJourney(), false);
+      oystercard.topup(2);
       oystercard.touchIn();
       assert.strictEqual(oystercard.isInJourney(), true);
+    });
+
+    it('throws an error if the balance is lower than the cost of a single journey', function() {
+      var oystercard = new Oystercard();
+      assert.throws(
+        function() { oystercard.touchIn() },
+        Error,
+        'Insufficient balance for a journey.'
+      );
     });
   })
   
   describe('#touchOut', function() {
-    it('sets the inJourney flag to true', function() {
+    it('sets the inJourney flag to false', function() {
       var oystercard = new Oystercard();
       assert.strictEqual(oystercard.isInJourney(), false);
+      oystercard.topup(2);
       oystercard.touchIn();
       assert.strictEqual(oystercard.isInJourney(), true);
       oystercard.touchOut();
