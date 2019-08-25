@@ -27,4 +27,12 @@ describe('Oystercard', function() {
       assert.strictEqual(oystercard.balance(), 0);
     });
   });
+
+  describe('#deduct', function() {
+    it('deducts the amount from the balance of the card', function() {
+      var oystercard = new Oystercard();
+      oystercard.deduct(1.50);
+      assert.strictEqual(oystercard.balance(), -1.50);
+    });
+  });
 });

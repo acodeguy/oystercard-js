@@ -24,6 +24,12 @@ class Oystercard {
     }
     
   }
+
+  deduct(amount) {
+
+    this._balance -= amount;
+    
+  }
 }
 
 module.exports = Oystercard;
