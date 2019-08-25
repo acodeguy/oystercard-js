@@ -3,6 +3,7 @@ class Oystercard {
   constructor() {
     this._MAX_BALANCE = 100;
     this._balance = 0;
+    this._isInJourney = false;
   }
 
   balance() {
@@ -28,7 +29,15 @@ class Oystercard {
   deduct(amount) {
 
     this._balance -= amount;
-    
+
+  }
+
+  touchIn() {
+    this._isInJourney = true;
+  }
+
+  isInJourney() {
+    return this._isInJourney;
   }
 }
 

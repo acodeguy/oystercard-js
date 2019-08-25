@@ -35,4 +35,14 @@ describe('Oystercard', function() {
       assert.strictEqual(oystercard.balance(), -1.50);
     });
   });
+
+  describe('#touchIn', function() {
+    it('sets the inJourney flag to true', function() {
+      var oystercard = new Oystercard();
+      assert.strictEqual(oystercard.isInJourney(), false);
+      oystercard.touchIn();
+      assert.strictEqual(oystercard.isInJourney(), true);
+    });
+  })
+  
 });
