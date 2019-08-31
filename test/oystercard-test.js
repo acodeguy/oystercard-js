@@ -65,6 +65,12 @@ describe('Oystercard', function() {
       oystercard.touchOut();
       assert.strictEqual(oystercard.isInJourney(), false);
     });
+
+    it('deducts the minimum fare', function() {
+      var oystercard = new Oystercard();
+      oystercard.touchOut();
+      assert.strictEqual(oystercard.balance(), -1);
+    });
   })
 
 });
