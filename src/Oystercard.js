@@ -13,7 +13,7 @@ class Oystercard {
 
   topup(amount) {
 
-    let newBalance = this._balance + amount;
+    const newBalance = this._balance + amount;
 
     if (newBalance <= this._MAX_BALANCE) {
 
