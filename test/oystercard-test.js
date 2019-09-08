@@ -78,6 +78,15 @@ describe('Oystercard', function() {
       oystercard.touchOut();
       assert.strictEqual(oystercard.balance(), -1);
     });
+
+    it('forgets the entry station', function() {
+
+      const oystercard = new Oystercard();
+      oystercard.topup(2);
+      oystercard.touchIn('Achway');
+      oystercard.touchOut();
+      assert.strictEqual(oystercard.entryStation(), '');
+    });
   })
 
 });

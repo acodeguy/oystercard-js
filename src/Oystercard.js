@@ -48,6 +48,7 @@ class Oystercard {
 
   touchOut() {
     this._isInJourney = false;
+    this._entryStation = '';
     this.deduct(this._MIN_SINGLE_FARE);
   }
 
