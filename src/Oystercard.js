@@ -5,6 +5,7 @@ class Oystercard {
     this._MIN_SINGLE_FARE = 1;
     this._balance = 0;
     this._isInJourney = false;
+    this._entryStation = '';
   }
 
   balance() {
@@ -33,10 +34,12 @@ class Oystercard {
 
   }
 
-  touchIn() {
+  touchIn(stationName) {
+
     if (this._balance >= this._MIN_SINGLE_FARE) {
 
       this._isInJourney = true;
+      this._entryStation = stationName;
     } else {
 
       throw new Error('Insufficient balance for a journey.');
@@ -50,6 +53,10 @@ class Oystercard {
 
   isInJourney() {
     return this._isInJourney;
+  }
+
+  entryStation() {
+    return this._entryStation;
   }
 }
 

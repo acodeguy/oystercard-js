@@ -53,6 +53,13 @@ describe('Oystercard', function() {
         'Insufficient balance for a journey.'
       );
     });
+
+    it('records the entry station', function() {
+      const oystercard = new Oystercard();
+      oystercard.topup(2);
+      oystercard.touchIn('Archway');
+      assert.strictEqual(oystercard.entryStation(), 'Archway');
+    });
   })
   
   describe('#touchOut', function() {
