@@ -4,7 +4,6 @@ class Oystercard {
     this._MAX_BALANCE = 100;
     this._MIN_SINGLE_FARE = 1;
     this._balance = 0;
-    this._isInJourney = false;
     this._entryStation = '';
   }
 
@@ -38,7 +37,6 @@ class Oystercard {
 
     if (this._balance >= this._MIN_SINGLE_FARE) {
 
-      this._isInJourney = true;
       this._entryStation = stationName;
     } else {
 
@@ -47,13 +45,13 @@ class Oystercard {
   }
 
   touchOut() {
-    this._isInJourney = false;
     this._entryStation = '';
     this.deduct(this._MIN_SINGLE_FARE);
   }
 
   isInJourney() {
-    return this._isInJourney;
+
+    return this._entryStation !== '' ? true : false
   }
 
   entryStation() {
