@@ -4,9 +4,9 @@ const Oystercard = require('../src/Oystercard');
 
 describe('Oystercard', function() {
 
-  it('starts with an empty journey history', function() {
+  it('starts with an empty journey history array', function() {
     const oystercard = new Oystercard();
-    assert.deepEqual(oystercard.journeyHistory(), {});
+    assert.deepEqual(oystercard.journeyHistory(), []);
   });
 
   describe('#balance', function() {
@@ -43,6 +43,7 @@ describe('Oystercard', function() {
   });
 
   describe('#touchIn', function() {
+
     it('sets the inJourney flag to true', function() {
       const oystercard = new Oystercard();
       assert.strictEqual(oystercard.isInJourney(), false);
@@ -94,5 +95,25 @@ describe('Oystercard', function() {
       assert.strictEqual(oystercard.entryStation(), '');
     });
   })
+
+  describe('#journeyHistory', function() {
+
+    it('completing a journey (#touchIn then #touchOut) creates a journey in the journey history', function() {
+      const oystercard = new Oystercard();
+      oystercard.topup(2);
+
+      oystercard.touchIn('Finsbury Park');
+      oystercard.touchOut('Victoria');
+      
+      const expectedJourneyHistory = [
+        { 
+          entry: 'Finsbury Park',
+          exit: 'Victoria'
+       }
+      ]
+
+      assert.deepEqual(oystercard.journeyHistory(), expectedJourneyHistory);
+    });
+  });
 
 });
