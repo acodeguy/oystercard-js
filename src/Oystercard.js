@@ -5,6 +5,7 @@ class Oystercard {
     this._MIN_SINGLE_FARE = 1;
     this._balance = 0;
     this._entryStation = '';
+    this._journeyHistory = {};
   }
 
   balance() {
@@ -56,6 +57,10 @@ class Oystercard {
 
   entryStation() {
     return this._entryStation;
+  }
+
+  journeyHistory() {
+    return this._journeyHistory;
   }
 }
 

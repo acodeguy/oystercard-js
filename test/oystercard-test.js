@@ -3,6 +3,12 @@ const assert = require('assert');
 const Oystercard = require('../src/Oystercard');
 
 describe('Oystercard', function() {
+
+  it('starts with an empty journey history', function() {
+    const oystercard = new Oystercard();
+    assert.deepEqual(oystercard.journeyHistory(), {});
+  });
+
   describe('#balance', function() {
     it('shows the current balance on the card', function() {
       const oystercard = new Oystercard();
