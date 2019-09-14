@@ -5,7 +5,7 @@ class Oystercard {
     this._MIN_SINGLE_FARE = 1;
     this._balance = 0;
     this._entryStation = '';
-    this._journeyHistory = {};
+    this._journeyHistory = [];
   }
 
   balance() {
