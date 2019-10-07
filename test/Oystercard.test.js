@@ -4,7 +4,7 @@ const Oystercard = require('../src/Oystercard');
 
 describe('Oystercard', function() {
 
-  it('starts with an empty journey history array', function() {
+  it('starts with an empty journey history', function() {
     const oystercard = new Oystercard();
     assert.deepEqual(oystercard.journeyHistory(), []);
   });
@@ -60,13 +60,6 @@ describe('Oystercard', function() {
         'Insufficient balance for a journey.'
       );
     });
-
-    it('records the entry station', function() {
-      const oystercard = new Oystercard();
-      oystercard.topup(2);
-      oystercard.touchIn('Archway');
-      assert.strictEqual(oystercard.entryStation(), 'Archway');
-    });
   })
   
   describe('#touchOut', function() {
@@ -94,26 +87,14 @@ describe('Oystercard', function() {
       oystercard.touchOut();
       assert.strictEqual(oystercard.entryStation(), '');
     });
-  })
 
-  describe('#journeyHistory', function() {
-
-    it('completing a journey (#touchIn then #touchOut) creates a journey in the journey history', function() {
+    it('creates a new journey in the journeyHistory', function() {
+      
       const oystercard = new Oystercard();
       oystercard.topup(2);
-
-      oystercard.touchIn('Finsbury Park');
+      oystercard.touchIn('Walthamstow Central');
       oystercard.touchOut('Victoria');
-      
-      const expectedJourneyHistory = [
-        { 
-          entry: 'Finsbury Park',
-          exit: 'Victoria'
-       }
-      ]
-
-      assert.deepEqual(oystercard.journeyHistory(), expectedJourneyHistory);
+      assert.strictEqual(oystercard.journeyHistory().length, 1);
     });
   });
-
 });
