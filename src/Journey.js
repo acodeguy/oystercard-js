@@ -20,6 +20,8 @@ class Journey {
     fare() {
         if(this._entry === undefined || this._exit === undefined) {
             return 6;
+        } else {
+            return 1;
         }
     }
 }

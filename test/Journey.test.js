@@ -32,13 +32,22 @@ describe('Journey', function() {
 
     describe('#fare', function() {
 
-        it('deducts the penalty fare is a touch-in/out is missing', function() {
+        it('deducts the penalty fare if a touch-in/out is missing', function() {
 
             const journey = new Journey('Archway');
 
             journey.end();
 
             assert.equal(journey.fare(), 6);
+        });
+
+        it('deducts the minimum fare if a journal is complete', function() {
+
+            const journey = new Journey('Victoria');
+
+            journey.end('Vauxhall');
+
+            assert.equal(journey.fare(), 1);
         });
     });
 });
