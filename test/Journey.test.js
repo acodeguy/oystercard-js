@@ -28,6 +28,17 @@ describe('Journey', function() {
             exit: 'Morden'
         }
         assert.deepStrictEqual(journey.details(), expectedJourney);
-        
+    });
+
+    describe('#fare', function() {
+
+        it('deducts the penalty fare is a touch-in/out is missing', function() {
+
+            const journey = new Journey('Archway');
+
+            journey.end();
+
+            assert.equal(journey.fare(), 6);
+        });
     });
 });

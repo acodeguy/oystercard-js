@@ -16,6 +16,12 @@ class Journey {
     end(atStation) {
         this._exit = atStation;
     }
+
+    fare() {
+        if(this._entry === undefined || this._exit === undefined) {
+            return 6;
+        }
+    }
 }
 
 module.exports = Journey;
